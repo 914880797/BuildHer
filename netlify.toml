@@ -1,0 +1,19 @@
+[build]
+  base = "buildher"
+  command = "npm run build"
+  publish = "out"
+
+[[redirects]]
+  from = "/:path*.txt"
+  to = "/404.html"
+  status = 404
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
